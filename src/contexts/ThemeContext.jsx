@@ -4,7 +4,7 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('avesto-theme') || 'light';
+    return localStorage.getItem('avesto-theme') || 'dark';
   });
 
   useEffect(() => {

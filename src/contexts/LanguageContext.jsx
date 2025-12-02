@@ -44,22 +44,22 @@ const translations = {
         cupcakes: {
           title: "Gourmet Cupcakes",
           description: "Delicate cupcakes with premium buttercream in seasonal flavors",
-          price: "From $4.50"
+          price: "From 15,000 UZS"
         },
         cakes: {
           title: "Custom Cakes",
           description: "Beautiful custom-designed cakes for weddings, birthdays & more",
-          price: "From $75"
+          price: "From 2,500,000 UZS"
         },
         pastries: {
           title: "French Pastries",
           description: "Authentic croissants, éclairs, and tarts made with European butter",
-          price: "From $5"
+          price: "From 18,000 UZS"
         },
         cookies: {
           title: "Artisan Cookies",
           description: "Handcrafted cookies & macarons in unique flavor combinations",
-          price: "From $3"
+          price: "From 10,000 UZS"
         }
       }
     },
@@ -106,11 +106,19 @@ const translations = {
       },
       info: {
         visitTitle: "Visit Us",
-        address: "Address:",
-        addressLine1: "123 Sweet Street",
-        addressLine2: "Bakery District, BD 12345",
+        address: "Our Locations:",
+        addresses: [
+          "37 Uzbekistan Street",
+          "Sameeva Street",
+          "15 Navruzi Street",
+          "6A Buyuk Ipak Yuli Street"
+        ],
         phone: "Phone:",
-        email: "Email:",
+        phoneNumbers: [
+          "+998 (55) 705 0101",
+          "+998 (98) 273 3854",
+          "+998 (90) 655 5518"
+        ],
         hours: "Hours:",
         hoursWeekday: "Mon-Fri: 7:00 AM - 7:00 PM",
         hoursWeekend: "Sat-Sun: 8:00 AM - 8:00 PM"
@@ -127,7 +135,7 @@ const translations = {
         products: "Products",
         contact: "Contact"
       },
-      copyright: "© 2024 Avesto Sweets. All rights reserved. Made with ❤️ and flour."
+      copyright: "© 2025 Avesto Sweets. All rights reserved. Made with ❤️ and flour."
     }
   },
   
@@ -172,22 +180,22 @@ const translations = {
         cupcakes: {
           title: "Изысканные Капкейки",
           description: "Нежные капкейки с премиальным кремом сезонных вкусов",
-          price: "От $4.50"
+          price: "От 15,000 сум"
         },
         cakes: {
           title: "Торты на Заказ",
           description: "Красивые торты на заказ для свадеб, дней рождения и других событий",
-          price: "От $75"
+          price: "От 2,500,000 сум"
         },
         pastries: {
           title: "Французская Выпечка",
           description: "Аутентичные круассаны, эклеры и тарты из европейского масла",
-          price: "От $5"
+          price: "От 18,000 сум"
         },
         cookies: {
           title: "Ремесленное Печенье",
           description: "Ручное печенье и макаронс с уникальными вкусовыми сочетаниями",
-          price: "От $3"
+          price: "От 10,000 сум"
         }
       }
     },
@@ -234,11 +242,19 @@ const translations = {
       },
       info: {
         visitTitle: "Посетите Нас",
-        address: "Адрес:",
-        addressLine1: "Сладкая улица, 123",
-        addressLine2: "Кондитерский район, BD 12345",
+        address: "Наши Адреса:",
+        addresses: [
+          "Ул. Узбекистанская 37",
+          "Ул. Самеева",
+          "Ул. Наврузи 15",
+          "Ул. Буюк Ипак Юли 6А"
+        ],
         phone: "Телефон:",
-        email: "Email:",
+        phoneNumbers: [
+          "+998 (55) 705 0101",
+          "+998 (98) 273 3854",
+          "+998 (90) 655 5518"
+        ],
         hours: "Часы работы:",
         hoursWeekday: "Пн-Пт: 7:00 - 19:00",
         hoursWeekend: "Сб-Вс: 8:00 - 20:00"
@@ -255,7 +271,7 @@ const translations = {
         products: "Продукты",
         contact: "Контакты"
       },
-      copyright: "© 2024 Avesto Sweets. Все права защищены. Сделано с ❤️ и мукой."
+      copyright: "© 2025 Avesto Sweets. Все права защищены. Сделано с ❤️ и мукой."
     }
   },
   
@@ -300,22 +316,22 @@ const translations = {
         cupcakes: {
           title: "Gurme Kapkeyklar",
           description: "Mavsumiy ta'mlardagi premium krem bilan nozik kapkeyklar",
-          price: "$4.50 dan"
+          price: "15,000 so'mdan"
         },
         cakes: {
           title: "Maxsus Tortlar",
           description: "To'ylar, tug'ilgan kunlar va boshqa tadbirlar uchun go'zal maxsus dizayn tortlar",
-          price: "$75 dan"
+          price: "2,500,000 so'mdan"
         },
         pastries: {
           title: "Frantsuz Pirojniy",
           description: "Yevropa moyidan tayyorlangan asl kruassan, ekler va tartlar",
-          price: "$5 dan"
+          price: "18,000 so'mdan"
         },
         cookies: {
           title: "Qo'lda Pechene",
           description: "Noyob ta'mlar bilan qo'lda tayyorlangan pechene va makaron",
-          price: "$3 dan"
+          price: "10,000 so'mdan"
         }
       }
     },
@@ -362,11 +378,19 @@ const translations = {
       },
       info: {
         visitTitle: "Bizni Tashrif Buyuring",
-        address: "Manzil:",
-        addressLine1: "Shirin ko'chasi, 123",
-        addressLine2: "Nonvoyxona tumani, BD 12345",
+        address: "Manzillarimiz:",
+        addresses: [
+          "O'zbekiston ko'chasi 37",
+          "Sameeva ko'chasi",
+          "Navro'zi ko'chasi 15",
+          "Buyuk Ipak Yo'li ko'chasi 6A"
+        ],
         phone: "Telefon:",
-        email: "Email:",
+        phoneNumbers: [
+          "+998 (55) 705 0101",
+          "+998 (98) 273 3854",
+          "+998 (90) 655 5518"
+        ],
         hours: "Ish vaqti:",
         hoursWeekday: "Dush-Jum: 7:00 - 19:00",
         hoursWeekend: "Shan-Yak: 8:00 - 20:00"
@@ -383,14 +407,14 @@ const translations = {
         products: "Mahsulotlar",
         contact: "Kontaktlar"
       },
-      copyright: "© 2024 Avesto Sweets. Barcha huquqlar himoyalangan. ❤️ va un bilan tayyorlangan."
+      copyright: "© 2025 Avesto Sweets. Barcha huquqlar himoyalangan. ❤️ va un bilan tayyorlangan."
     }
   }
 };
 
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('avesto-language') || 'en';
+    return localStorage.getItem('avesto-language') || 'ru';
   });
 
   useEffect(() => {

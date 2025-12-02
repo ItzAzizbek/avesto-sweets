@@ -789,3 +789,256 @@
     gap: var(--spacing-xs);
   }
 }
+
+/* =================================
+   NEW YEAR DECORATIONS
+   ================================= */
+
+/* Snowflakes container */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 85%, white, transparent),
+    radial-gradient(1px 1px at 75% 40%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: snowfall 20s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes snowfall {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%;
+  }
+}
+
+/* Festive gold and silver accents for New Year */
+:root {
+  --new-year-gold: #FFD700;
+  --new-year-silver: #C0C0C0;
+  --new-year-sparkle: #FFF8DC;
+}
+
+/* Add sparkle effect to accent elements */
+.price::after,
+.stars::after {
+  content: '✨';
+  margin-left: 0.5rem;
+  animation: sparkle 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+/* New Year festive glow on cards */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  animation: festiveGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes festiveGlow {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-10%, -10%);
+    opacity: 0.6;
+  }
+}
+
+/* Snowflake decorations on section titles */
+.section-title h2::before,
+.section-title h2::after {
+  content: '❄️';
+  margin: 0 1rem;
+  display: inline-block;
+  animation: rotateSnowflake 10s linear infinite;
+  font-size: 0.8em;
+}
+
+@keyframes rotateSnowflake {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Festive button hover effects */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--new-year-gold) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* New Year shimmer effect on hero title */
+.hero-title {
+  background: linear-gradient(
+    90deg,
+    var(--color-text-primary) 0%,
+    var(--new-year-gold) 25%,
+    var(--new-year-silver) 50%,
+    var(--new-year-gold) 75%,
+    var(--color-text-primary) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Snow particles container */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Individual snowflake */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  user-select: none;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(var(--sway)) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Festive accent colors in dark mode */
+html.dark {
+  --color-accent: #FFD700;
+}
+
+html.dark .feature-icon,
+html.dark .info-icon {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+}
+
+/* Winter frost effect on glass cards */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments for New Year effects */
+@media (max-width: 768px) {
+  .section-title h2::before,
+  .section-title h2::after {
+    font-size: 0.7em;
+    margin: 0 0.5rem;
+  }
+  
+  .hero::after {
+    opacity: 0.4;
+  }
+  
+  .snowflake {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title h2::before,
+  .section-title h2::after {
+    display: none;
+  }
+  
+  .price::after,
+  .stars::after {
+    font-size: 0.8em;
+  }
+  
+  .snowflake {
+    font-size: 12px;
+  }
+}

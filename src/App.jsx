@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useLanguage } from './contexts/LanguageContext'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import ThemeSwitcher from './components/ThemeSwitcher'
@@ -14,8 +15,6 @@ import {
   Cake,
   Croissant,
   Cookie,
-  Instagram,
-  Facebook,
   Pin
 } from 'lucide-react'
 import './App.css'
@@ -28,6 +27,44 @@ function App() {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Snow particle effect
+  useEffect(() => {
+    const snowContainer = document.createElement('div');
+    snowContainer.className = 'snow-container';
+    document.body.appendChild(snowContainer);
+
+    const snowflakes = ['❄', '❅', '❆'];
+    const numberOfSnowflakes = 50;
+
+    for (let i = 0; i < numberOfSnowflakes; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+      
+      // Randomize properties for each snowflake
+      const startPositionX = Math.random() * 100; // 0-100%
+      const endSway = (Math.random() - 0.5) * 100; // -50px to 50px horizontal sway
+      const duration = 8 + Math.random() * 10; // 8-18 seconds
+      const delay = Math.random() * 5; // 0-5 second delay
+      const size = 0.5 + Math.random() * 1; // 0.5-1.5 size multiplier
+      const opacity = 0.4 + Math.random() * 0.6; // 0.4-1.0 opacity
+      
+      snowflake.style.left = `${startPositionX}%`;
+      snowflake.style.fontSize = `${20 * size}px`;
+      snowflake.style.opacity = opacity;
+      snowflake.style.animationDuration = `${duration}s`;
+      snowflake.style.animationDelay = `${delay}s`;
+      snowflake.style.setProperty('--sway', `${endSway}px`);
+      
+      snowContainer.appendChild(snowflake);
+    }
+
+    return () => {
+      document.body.removeChild(snowContainer);
+    };
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,13 +74,58 @@ function App() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const successMsg = t.contact.form.successMessage
-      .replace('{name}', formData.name)
-      .replace('{email}', formData.email);
-    alert(successMsg);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+
+    // Validate required fields (Name, Phone, Message)
+    if (!formData.name || !formData.phone || !formData.message) {
+      alert(t.contact.form.errorMessage || 'Please fill in all required fields');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+      if (!botToken || !chatId) {
+        throw new Error('Telegram credentials not configured');
+      }
+
+      // Format message for Telegram
+      const telegramMessage = `
+🍰 *Новая заявка на контактную форму*
+
+👤 *Имя:* ${formData.name}
+📱 *Телефон:* ${formData.phone}
+${formData.email ? `📧 *Email:* ${formData.email}\n` : ''}
+💬 *Сообщение:*
+${formData.message}
+      `.trim();
+
+      // Send message directly to Telegram API
+      await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        chat_id: chatId,
+        text: telegramMessage,
+        parse_mode: 'Markdown',
+      });
+
+      // Show success message
+      const successMsg = t.contact.form.successMessage
+        .replace('{name}', formData.name)
+        .replace('{email}', formData.email || 'your email');
+      alert(successMsg);
+      
+      // Reset form
+      setFormData({ name: '', email: '', phone: '', message: '' });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert(t.contact.form.errorMessage || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -225,25 +307,25 @@ function App() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">{t.contact.form.email} {t.contact.form.required}</label>
+                  <label htmlFor="email">{t.contact.form.email}</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    required
                     placeholder={t.contact.form.emailPlaceholder}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="phone">{t.contact.form.phone}</label>
+                  <label htmlFor="phone">{t.contact.form.phone} {t.contact.form.required}</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
+                    required
                     placeholder={t.contact.form.phonePlaceholder}
                   />
                 </div>
@@ -259,8 +341,12 @@ function App() {
                     placeholder={t.contact.form.messagePlaceholder}
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
-                  {t.contact.form.submit}
+                <button 
+                  type="submit" 
+                  className="btn btn-primary btn-block"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (t.contact.form.sending || 'Sending...') : t.contact.form.submit}
                 </button>
               </form>
             </div>
@@ -271,25 +357,21 @@ function App() {
                   <MapPin size={18} className="info-icon" />
                   <span>
                     <strong>{t.contact.info.address}</strong><br />
-                    {t.contact.info.addressLine1}<br />
-                    {t.contact.info.addressLine2}
+                    {t.contact.info.addresses.map((addr, index) => (
+                      <span key={index} style={{display: 'block', marginBottom: '4px'}}>{addr}</span>
+                    ))}
                   </span>
                 </p>
                 <p className="info-item">
                   <Phone size={18} className="info-icon" />
                   <span>
                     <strong>{t.contact.info.phone}</strong><br />
-                    +1 (555) SWEETS-1<br />
-                    +1 (555) 793-3871
+                    {t.contact.info.phoneNumbers.map((phone, index) => (
+                      <span key={index} style={{display: 'block', marginBottom: '4px'}}>{phone}</span>
+                    ))}
                   </span>
                 </p>
-                <p className="info-item">
-                  <Mail size={18} className="info-icon" />
-                  <span>
-                    <strong>{t.contact.info.email}</strong><br />
-                    hello@avestosweets.com
-                  </span>
-                </p>
+
                 <p className="info-item">
                   <Clock size={18} className="info-icon" />
                   <span>
@@ -300,18 +382,6 @@ function App() {
                 </p>
               </div>
               <div className="social-links">
-                <a href="#" className="social-link" aria-label="Instagram">
-                  <Instagram size={20} />
-                  <span>Instagram</span>
-                </a>
-                <a href="#" className="social-link" aria-label="Facebook">
-                  <Facebook size={20} />
-                  <span>Facebook</span>
-                </a>
-                <a href="#" className="social-link" aria-label="Pinterest">
-                  <Pin size={20} />
-                  <span>Pinterest</span>
-                </a>
               </div>
             </div>
           </div>
