@@ -13,7 +13,7 @@ const translations = {
       viewMenu: "View Menu",
       scrollText: "Scroll to explore"
     },
-    
+
     // About Section
     about: {
       title: "Our Sweet Story",
@@ -35,7 +35,7 @@ const translations = {
         }
       }
     },
-    
+
     // Products Section
     products: {
       title: "Our Specialties",
@@ -49,7 +49,7 @@ const translations = {
         cakes: {
           title: "Custom Cakes",
           description: "Beautiful custom-designed cakes for weddings, birthdays & more",
-          price: "From 2,500,000 UZS"
+          price: "From 250,000 UZS"
         },
         pastries: {
           title: "French Pastries",
@@ -63,7 +63,7 @@ const translations = {
         }
       }
     },
-    
+
     // Testimonials Section
     testimonials: {
       title: "What Our Customers Say",
@@ -86,7 +86,7 @@ const translations = {
         }
       ]
     },
-    
+
     // Contact Section
     contact: {
       title: "Get in Touch",
@@ -124,7 +124,7 @@ const translations = {
         hoursWeekend: "Sat-Sun: 8:00 AM - 8:00 PM"
       }
     },
-    
+
     // Footer
     footer: {
       brand: "Avesto Sweets",
@@ -138,7 +138,7 @@ const translations = {
       copyright: "© 2025 Avesto Sweets. All rights reserved. Made with ❤️ and flour."
     }
   },
-  
+
   ru: {
     // Hero Section
     hero: {
@@ -149,7 +149,7 @@ const translations = {
       viewMenu: "Меню",
       scrollText: "Прокрутите вниз"
     },
-    
+
     // About Section
     about: {
       title: "Наша Сладкая История",
@@ -171,7 +171,7 @@ const translations = {
         }
       }
     },
-    
+
     // Products Section
     products: {
       title: "Наши Специальности",
@@ -185,7 +185,7 @@ const translations = {
         cakes: {
           title: "Торты на Заказ",
           description: "Красивые торты на заказ для свадеб, дней рождения и других событий",
-          price: "От 2,500,000 сум"
+          price: "От 250,000 сум"
         },
         pastries: {
           title: "Французская Выпечка",
@@ -199,7 +199,7 @@ const translations = {
         }
       }
     },
-    
+
     // Testimonials Section
     testimonials: {
       title: "Отзывы Наших Клиентов",
@@ -222,7 +222,7 @@ const translations = {
         }
       ]
     },
-    
+
     // Contact Section
     contact: {
       title: "Свяжитесь с Нами",
@@ -260,7 +260,7 @@ const translations = {
         hoursWeekend: "Сб-Вс: 8:00 - 20:00"
       }
     },
-    
+
     // Footer
     footer: {
       brand: "Avesto Sweets",
@@ -274,7 +274,7 @@ const translations = {
       copyright: "© 2025 Avesto Sweets. Все права защищены. Сделано с ❤️ и мукой."
     }
   },
-  
+
   uz: {
     // Hero Section
     hero: {
@@ -285,7 +285,7 @@ const translations = {
       viewMenu: "Menyu",
       scrollText: "Pastga aylantiring"
     },
-    
+
     // About Section
     about: {
       title: "Bizning Shirin Hikoyamiz",
@@ -307,7 +307,7 @@ const translations = {
         }
       }
     },
-    
+
     // Products Section
     products: {
       title: "Bizning Maxsus Mahsulotlarimiz",
@@ -321,7 +321,7 @@ const translations = {
         cakes: {
           title: "Maxsus Tortlar",
           description: "To'ylar, tug'ilgan kunlar va boshqa tadbirlar uchun go'zal maxsus dizayn tortlar",
-          price: "2,500,000 so'mdan"
+          price: "250,000 so'mdan"
         },
         pastries: {
           title: "Frantsuz Pirojniy",
@@ -335,7 +335,7 @@ const translations = {
         }
       }
     },
-    
+
     // Testimonials Section
     testimonials: {
       title: "Mijozlarimiz Fikrlari",
@@ -358,7 +358,7 @@ const translations = {
         }
       ]
     },
-    
+
     // Contact Section
     contact: {
       title: "Bog'laning",
@@ -396,7 +396,7 @@ const translations = {
         hoursWeekend: "Shan-Yak: 8:00 - 20:00"
       }
     },
-    
+
     // Footer
     footer: {
       brand: "Avesto Sweets",
